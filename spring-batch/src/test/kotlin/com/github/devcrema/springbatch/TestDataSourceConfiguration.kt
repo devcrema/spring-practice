@@ -14,10 +14,10 @@ class TestDataSourceConfiguration {
     @DependsOn("mySqlTestContainer")
     fun dataSource(): DataSource =
             DataSourceBuilder.create()
-                    .url("jdbc:postgresql://localhost:" +
+                    .url("jdbc:mysql://localhost:" +
                             "${MySqlTestContainer.MY_SQL_CONTAINER.getMappedPort(MySQLContainer.MYSQL_PORT)}/" +
                             MySqlTestContainer.DATABASE_NAME)
-                    .driverClassName("org.postgresql.Driver")
+                    .driverClassName("com.mysql.cj.jdbc.Driver")
                     .username(MySqlTestContainer.USERNAME)
                     .password(MySqlTestContainer.PASSWORD)
                     .build()
