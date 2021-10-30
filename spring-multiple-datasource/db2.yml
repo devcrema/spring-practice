@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  db2:
+    image: mysql:5.7
+    restart: always
+    container_name: mysql-db2
+    ports:
+      - "13332:3306"
+    environment:
+      - MYSQL_DATABASE=db2
+      - MYSQL_ROOT_PASSWORD=db2password
+      - TZ=Asia/Seoul
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./db/mysql/data1:/var/lib/mysql
+      - ./db-init2:/docker-entrypoint-initdb.d
+    platform: linux/x86_64
